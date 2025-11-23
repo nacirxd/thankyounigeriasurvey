@@ -1,0 +1,567 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Google Rewards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .google-text {
+            color: #4285f4;
+        }
+
+        .rewards-text {
+            color: #34a853;
+            margin-left: 5px;
+        }
+
+        .balance {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #5f6368;
+        }
+
+        .balance-icon {
+            width: 20px;
+            height: 20px;
+            background: #34a853;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .gift-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            animation: gradient 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #5f6368;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .value-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            color: #34a853;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 2px solid #c3e6cb;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #5f6368;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #34a853 0%, #2d8f47 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #4285f4;
+            border: 2px solid #4285f4;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: #4285f4;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3);
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 1.5;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4285f4;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .main-card {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .button-container {
+                gap: 12px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="header">
+        <div class="logo">
+            <span class="google-text">Google</span>
+            <span class="rewards-text">Rewards</span>
+        </div>
+        <div class="balance">
+            <div class="balance-icon">$</div>
+            <span><strong>SALDO</strong></span>
+            <span style="margin-left: 8px; font-weight: 600; color: #34a853;">17 USD</span>
+        </div>
+    </div>
+
+    <div class="main-card">
+        <div class="gift-icon">🎁</div>
+        
+        <h1 class="title">Congratulations!</h1>
+        
+        <p class="subtitle">
+          You have been selected for the<br>
+            new paid research program!  
+        </p>
+        
+        <div class="value-badge">
+            Initial Value: 17 USD
+        </div>
+        
+        <p class="description">
+            Answer a few quick questions about your habits and preferences in South Africa and earn real money.
+        </p>
+        
+        <div class="button-container">
+            <a href="#" class="btn btn-primary" id="whatsappBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.106"></path>
+                </svg>
+                Talk to Support
+            </a>
+            
+            <a href="#" class="btn btn-secondary" id="siteBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                Visit official Site
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo">
+            <span class="google-text">Google</span>
+            <span class="rewards-text"> Rewards</span>
+        </div>
+        
+        <p class="footer-text">
+            The Google Rewards program rewards participants for sharing their opinions and preferences, helping to improve products and services.
+        </p>
+        
+        <div class="footer-links">
+            <a href="#">Terms of use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Help</a>
+        </div>
+    </div>
+
+    <!-- Google Analytics 4 -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID'); // Substitua GA_MEASUREMENT_ID pelo seu ID real
+    </script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '556915953880317');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=5569159538803179&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script> <!-- Substitua GTM-XXXXXXX pelo seu ID -->
+
+    <script>
+        // ========== SISTEMA DE EVENTOS DE CONVERSÃO ==========
+        
+        // Função para disparar eventos em múltiplas plataformas
+        function trackConversion(eventName, eventData = {}) {
+            console.log('🎯 Evento de conversão:', eventName, eventData);
+            
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, {
+                    event_category: 'conversao',
+                    event_label: eventData.label || '',
+                    value: eventData.value || 0,
+                    currency: 'USD',
+                    ...eventData
+                });
+                console.log('✅ GA4 - Evento enviado:', eventName);
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', eventName, eventData);
+                console.log('✅ Facebook Pixel - Evento enviado:', eventName);
+            }
+            
+            // Google Tag Manager
+            if (typeof dataLayer !== 'undefined') {
+                dataLayer.push({
+                    event: eventName,
+                    event_category: 'conversao',
+                    event_action: eventData.action || eventName,
+                    event_label: eventData.label || '',
+                    value: eventData.value || 0,
+                    ...eventData
+                });
+                console.log('✅ GTM - Evento enviado:', eventName);
+            }
+            
+            // Evento customizado para outras integrações
+            window.dispatchEvent(new CustomEvent('conversionEvent', {
+                detail: { eventName, eventData }
+            }));
+        }
+
+        // ========== EVENTOS AUTOMÁTICOS ==========
+        
+        // Evento: Página carregada (Thank You Page View)
+        window.addEventListener('load', function() {
+            trackConversion('thank_you_page_view', {
+                action: 'page_view',
+                label: 'thank_you_page',
+                page_title: 'Google Rewards - Obrigado',
+                page_location: window.location.href
+            });
+        });
+
+        // Evento: Tempo na página (engajamento)
+        setTimeout(function() {
+            trackConversion('engagement_30s', {
+                action: 'time_on_page',
+                label: '30_seconds',
+                value: 30
+            });
+        }, 30000);
+
+        // ========== EVENTOS DOS BOTÕES ==========
+        
+        // Botão WhatsApp - Suporte
+        document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Disparar evento de conversão
+            trackConversion('whatsapp_click', {
+                action: 'click',
+                label: 'suporte_whatsapp',
+                button_text: 'Falar com Suporte',
+                value: 1
+            });
+            
+            // Aguardar um pouco antes de redirecionar para garantir que o evento seja enviado
+            setTimeout(function() {
+                // Substitua pelo seu link do ManyChat
+                window.open('https://wa.me/258856916362?text=Hi', '_blank');
+            }, 100);
+        });
+
+        // Botão Site Oficial
+        document.getElementById('siteBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Disparar evento de conversão
+            trackConversion('site_oficial_click', {
+                action: 'click',
+                label: 'site_oficial',
+                button_text: 'Acessar Site Oficial',
+                value: 2
+            });
+            
+            // Aguardar um pouco antes de redirecionar
+            setTimeout(function() {
+                // Substitua pelo link do seu site oficial
+                window.open('https://googlesurveysouthafricas.vercel.app', '_blank');
+            }, 100);
+        });
+
+        // ========== EVENTOS DE ENGAJAMENTO ==========
+        
+        // Rastrear scroll da página
+        let scrollTracked = false;
+        window.addEventListener('scroll', function() {
+            if (!scrollTracked && window.scrollY > 100) {
+                scrollTracked = true;
+                trackConversion('scroll_engagement', {
+                    action: 'scroll',
+                    label: 'page_scroll',
+                    value: 1
+                });
+            }
+        });
+
+        // Rastrear hover nos botões
+        document.querySelectorAll('.btn').forEach((button, index) => {
+            let hoverTracked = false;
+            
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                
+                if (!hoverTracked) {
+                    hoverTracked = true;
+                    trackConversion('button_hover', {
+                        action: 'hover',
+                        label: button.textContent.trim(),
+                        button_index: index,
+                        value: 0.5
+                    });
+                }
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // ========== EVENTOS ESPECIAIS ==========
+        
+        // Rastrear quando usuário sai da página (conversão completa)
+        window.addEventListener('beforeunload', function() {
+            trackConversion('page_exit', {
+                action: 'exit',
+                label: 'conversion_complete',
+                time_on_page: Math.round((Date.now() - performance.timing.navigationStart) / 1000)
+            });
+        });
+
+        // Rastrear visibilidade da página
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                trackConversion('page_hidden', {
+                    action: 'visibility',
+                    label: 'page_hidden'
+                });
+            } else {
+                trackConversion('page_visible', {
+                    action: 'visibility',
+                    label: 'page_visible'
+                });
+            }
+        });
+
+        // ========== CONVERSÕES DE VALOR ==========
+        
+        // Simular conversão de valor (pode ser customizado)
+        setTimeout(function() {
+            trackConversion('Purchase', { // Nome padrão do Facebook
+                action: 'purchase',
+                label: 'google_rewards_signup',
+                value: 17,
+                currency: 'USD',
+                content_name: 'Google Rewards Program',
+                content_category: 'Subscription'
+            });
+        }, 5000); // Aguarda 5 segundos para simular conversão
+
+        // ========== INTEGRAÇÃO COM OUTRAS PLATAFORMAS ==========
+        
+        // Para TikTok Pixel (se estiver usando)
+        if (typeof ttq !== 'undefined') {
+            window.addEventListener('conversionEvent', function(e) {
+                const { eventName, eventData } = e.detail;
+                ttq.track(eventName, eventData);
+                console.log('✅ TikTok Pixel - Evento enviado:', eventName);
+            });
+        }
+
+        // Para LinkedIn Insight Tag (se estiver usando)
+        if (typeof _linkedin_partner_id !== 'undefined') {
+            window.addEventListener('conversionEvent', function(e) {
+                const { eventName, eventData } = e.detail;
+                if (typeof lintrk !== 'undefined') {
+                    lintrk('track', { conversion_id: 'your_conversion_id' });
+                    console.log('✅ LinkedIn - Evento enviado:', eventName);
+                }
+            });
+        }
+
+        console.log('🚀 Sistema de rastreamento de conversões carregado!');
+    </script>
+    
+    <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  data-utmify-ignore-iframe
+  data-utmify-is-cartpanda
+  async
+  defer
+></script>
+
+</body></html>
